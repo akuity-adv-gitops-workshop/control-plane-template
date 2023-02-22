@@ -59,7 +59,7 @@ spec:
     - matrix:
         generators:
           - git:
-              repoURL: https://github.com/argocon2022-workshop/control-plane
+              repoURL: https://github.com/akuity-adv-gitops-workshop/control-plane-template
               revision: HEAD
               directories:
                 - path: clusters/addons/*
@@ -73,7 +73,7 @@ spec:
     spec:
       project: default
       source:
-        repoURL: https://github.com/argocon2022-workshop/control-plane
+        repoURL: https://github.com/akuity-adv-gitops-workshop/control-plane-template
         targetRevision: HEAD
         path: '{{path}}'
       destination:
