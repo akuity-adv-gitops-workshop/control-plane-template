@@ -21,9 +21,8 @@ that introduces requires Argo CD Projects.
 
 To create project:
 
-* Copy the `argocd/USERNAME-project.yaml` file and replace `USERNAME` with your GitHub username.
+* Copy the `argocd/team-projects/USERNAME-project.yaml` file and replace `USERNAME` with your GitHub username.
 * Commit changes and create a pull request to the `main` branch.
-
 
 ## Cluster Infrastructure
 
