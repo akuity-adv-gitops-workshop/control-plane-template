@@ -4,11 +4,13 @@ metadata:
   name: argocon-cluster
 spec:
   destination:
-    name: argocon
+    name: workshop
     namespace: '*'
   project: default
   source:
     path: clusters/argocon
     repoURL: https://github.com/akuity-adv-gitops-workshop/control-plane-template
+    directory:
+      recurse: true
   syncPolicy:
     automated: {}
