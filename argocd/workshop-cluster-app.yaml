@@ -1,16 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argocon-cluster
+  name: workshop-cluster
 spec:
   destination:
     name: workshop
     namespace: '*'
   project: default
   source:
-    path: clusters/argocon
+    path: clusters/workshop
     repoURL: https://github.com/akuity-adv-gitops-workshop/control-plane-template
-    directory:
-      recurse: true
   syncPolicy:
     automated: {}
