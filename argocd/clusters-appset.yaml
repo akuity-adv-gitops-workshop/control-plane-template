@@ -14,7 +14,7 @@ spec:
     spec:
       project: default
       source:
-        repoURL: https://github.com/akuity-adv-gitops-workshop/control-plane-test3
+        repoURL: https://github.com/akuity-adv-gitops-workshop/control-plane-template
         targetRevision: HEAD
         path: 'clusters/{{name}}'
         directory:
