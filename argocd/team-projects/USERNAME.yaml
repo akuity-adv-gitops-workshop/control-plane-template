@@ -4,12 +4,12 @@
 #   name: <USERNAME>
 # spec:
 #   sourceRepos:
-#     - '*'
+#     - 'https://github.com/<USERNAME>/demo-app-deploy'
 #   destinations:
 #     - namespace: 'service-<USERNAME>-*'
 #       name: workshop
 #   roles:
-#   - name: admin
+#   - name: project-admin
 #     policies:
 #     - p, proj:<USERNAME>:admin, *, *, <USERNAME>/*, allow
 #     groups:
