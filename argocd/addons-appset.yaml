@@ -1,29 +1,34 @@
-# apiVersion: argoproj.io/v1alpha1
-# kind: ApplicationSet
-# metadata:
-#   name: addons
-# spec:
-#   generators:
-#     - matrix:
-#         generators:
-#           - git:
-#               repoURL: https://github.com/akuity-adv-gitops-workshop/control-plane-template
-#               revision: HEAD
-#               directories:
-#                 - path: clusters/addons/*
-#           - clusters:
-#               selector:
-#                 matchExpressions:
-#                 - {key: 'akuity.io/argo-cd-cluster-name', operator: NotIn, values: [in-cluster]}
-#   template:
-#     metadata:
-#       name: '{{path.basename}}-{{name}}'
-#     spec:
-#       project: default
-#       source:
-#         repoURL: https://github.com/akuity-adv-gitops-workshop/control-plane-template
-#         targetRevision: HEAD
-#         path: '{{path}}'
-#       destination:
-#         server: '{{server}}'
-#         namespace: '{{path.basename}}'
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: addons
+spec:
+  generators:
+    - matrix:
+        generators:
+          - git:
+              repoURL: https://github.com/akuity-adv-gitops-workshop/control-plane-template
+              revision: HEAD
+              directories:
+                - path: clusters/addons/*
+          - clusters:
+              selector:
+                matchExpressions:
+                - {key: 'akuity.io/argo-cd-cluster-name', operator: NotIn, values: [in-cluster]}
+  template:
+    metadata:
+      name: '{{path.basename}}-{{name}}'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/akuity-adv-gitops-workshop/control-plane-template
+        targetRevision: HEAD
+        path: '{{path}}'
+      destination:
+        server: '{{server}}'
+        namespace: '{{path.basename}}'
+      syncPolicy:
+        automated: {}
+        syncOptions:
+          - CreateNamespace=true
+          - ServerSideApply=true  # Big CRDs.
