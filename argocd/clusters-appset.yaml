@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: clusters
+spec:
+  generators:
+  - clusters:
+      selector:
+        matchExpressions:
+        - {key: 'akuity.io/argo-cd-cluster-name', operator: NotIn, values: [in-cluster]}
+  template:
+    metadata:
+      name: '{{name}}-cluster'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/akuity-adv-gitops-workshop/control-plane-test3
+        targetRevision: HEAD
+        path: 'clusters/{{name}}'
+        directory:
+          recurse: true
+      destination:
+        name: '{{name}}'
+        namespace: '*'
+      syncPolicy:
+        automated: {}
