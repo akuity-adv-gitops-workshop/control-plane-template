@@ -7,10 +7,10 @@
 #     - '*'
 #   destinations:
 #     - namespace: 'service-<USERNAME>-*'
-#       server: http://cluster-argocon:8001
+#       name: workshop
 #   roles:
 #   - name: admin
 #     policies:
 #     - p, proj:<USERNAME>:admin, *, *, <USERNAME>/*, allow
 #     groups:
-#     - <EMAIL> # please copy it from https://argocon.cd.akuity.cloud/user-info
+#     - <EMAIL> # Copy email shown in the "User info" of Argo CD.
