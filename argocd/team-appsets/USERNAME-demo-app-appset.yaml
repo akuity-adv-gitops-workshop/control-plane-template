@@ -13,7 +13,7 @@
 #     metadata:
 #       name: '<username>-demo-app-{{path.basename}}'
 #     spec:
-#       project: default
+#       project: <username>
 #       source:
 #         repoURL: https://github.com/<username>/demo-app-deploy
 #         targetRevision: HEAD
