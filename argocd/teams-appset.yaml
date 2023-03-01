@@ -8,9 +8,9 @@ spec:
       repoURL: https://github.com/akuity-adv-gitops-workshop/control-plane-template
       revision: HEAD
       directories:
-      - path: "teams/*"  # This needs to be config.json and a valid json file.
+      - path: "teams/*"
       - path: teams/USERNAME
-        exclude: false
+        exclude: true
   template:
     metadata:
       name: 'team-{{path.basename}}'

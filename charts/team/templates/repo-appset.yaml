@@ -21,8 +21,11 @@ spec:
       project: '{{ $.Release.Name }}'
       source:
         repoURL: 'https://github.com/{{ $.Release.Name }}/{{ . }}'
-        targetRevision: '{{ "{{" }}path{{ "}}" }}'
-        path: './'
+        targetRevision: 'HEAD'
+        path: '{{ "{{" }}path{{ "}}" }}'
+        ## Rendered manifests.
+        # targetRevision: '{{ "{{" }}path{{ "}}" }}'
+        # path: './'
       destination:
         name: '{{ $.Values.cluster }}'
         namespace: '{{ $.Release.Name }}-{{ "{{" }}path.basename{{ "}}" }}'
