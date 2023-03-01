@@ -10,7 +10,7 @@ spec:
         - {key: 'akuity.io/argo-cd-cluster-name', operator: NotIn, values: [in-cluster]}
   template:
     metadata:
-      name: '{{name}}-cluster'
+      name: 'cluster-{{name}}'
     spec:
       project: default
       source:

@@ -1,0 +1,7 @@
+email: your@email.com
+cluster: my-cluster
+namespaces:
+- dev
+- stage
+- prod
+repos: []

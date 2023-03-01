@@ -6,27 +6,29 @@ spec:
   generators:
     - matrix:
         generators:
-          - git:
-              repoURL: https://github.com/akuity-adv-gitops-workshop/control-plane-template
-              revision: HEAD
-              directories:
-                - path: clusters/addons/*
+          - list:
+              elements:  # from /charts/
+              - addonChart: external-secrets
+              - addonChart: kyverno
           - clusters:
               selector:
                 matchExpressions:
                 - {key: 'akuity.io/argo-cd-cluster-name', operator: NotIn, values: [in-cluster]}
   template:
     metadata:
-      name: '{{name}}-{{path.basename}}'
+      name: 'addon-{{name}}-{{addonChart}}'
     spec:
       project: default
       source:
-        repoURL: https://github.com/akuity-adv-gitops-workshop/control-plane-template
+        helm:
+          valueFiles:
+          - '../../clusters/{{name}}/addons-values.yaml'
+        repoURL: 'https://github.com/akuity-adv-gitops-workshop/control-plane-template'
+        path: charts/{{addonChart}}
         targetRevision: HEAD
-        path: '{{path}}'
       destination:
-        server: '{{server}}'
-        namespace: '{{path.basename}}'
+        namespace: '{{addonChart}}'
+        name: '{{name}}'
       syncPolicy:
         automated: {}
         syncOptions:
