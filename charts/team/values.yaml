@@ -1,7 +1,4 @@
-email: your@email.com
-cluster: my-cluster
-namespaces:
-- dev
-- stage
-- prod
+email: ""
+cluster: ""
+namespaces: []
 repos: []
