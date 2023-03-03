@@ -20,7 +20,7 @@ spec:
     spec:
       project: '{{ $.Release.Name }}'
       source:
-        repoURL: 'https://github.com/{{ $.Release.Name }}/{{ . }}'
+        repoURL: 'https://github.com/{{ $.Values.githubOrg | default $.Release.Name }}/{{ . }}'
         targetRevision: 'HEAD'
         path: '{{ "{{" }}path{{ "}}" }}'
         ## Rendered manifests.

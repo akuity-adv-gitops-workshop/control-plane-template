@@ -4,7 +4,7 @@ metadata:
   name: '{{ .Release.Name }}'
 spec:
   sourceRepos:
-    - 'https://github.com/{{ .Release.Name }}/*'
+    - 'https://github.com/{{ .Values.githubOrg | default .Release.Name }}/*'
   destinations:
     - namespace: '{{ .Release.Name }}-*'
       name: {{ .Values.cluster }}
