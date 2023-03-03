@@ -23,7 +23,7 @@ spec:
         helm:
           valueFiles:
           - '../../clusters/{{name}}/addons-values.yaml'
-        repoURL: 'https://github.com/akuity-adv-gitops-workshop/control-plane-template'
+        repoURL: 'https://github.com/<username>/control-plane'
         path: charts/{{addonChart}}
         targetRevision: HEAD
       destination:

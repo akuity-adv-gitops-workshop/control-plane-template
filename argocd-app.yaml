@@ -11,7 +11,7 @@ spec:
   project: default
   source:
     path: argocd/
-    repoURL: https://github.com/akuity-adv-gitops-workshop/control-plane-template
+    repoURL: https://github.com/<username>/control-plane
     directory:
       recurse: true
   syncPolicy:
