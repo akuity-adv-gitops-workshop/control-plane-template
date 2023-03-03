@@ -8,7 +8,7 @@ metadata:
 spec:
   generators:
   - git:
-      repoURL: 'https://github.com/{{ $.Release.Name }}/{{ . }}'
+      repoURL: 'https://github.com/{{ $.Values.githubOrg | default $.Release.Name }}/{{ . }}'
       revision: HEAD
       directories:
         - path: env/*
