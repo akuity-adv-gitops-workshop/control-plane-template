@@ -5,29 +5,7 @@ on:
       - setup-complete
 jobs:
   search-and-replace:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
-          fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
-          ref: 'main'  # checkout `main` instead of the `setup-complete` tag.
-
-      - name: Find and Replace
-        uses: jacobtomlinson/gha-find-replace@v3
-        with:
-          find: "<username>"
-          replace: "${{ github.actor }}"
-          regex: false
-          exclude: ".github/workflows/update-placeholders.yaml"
-      - name: Commit files
-        run: |
-          git diff -- .
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git commit -a -m "fix: update placeholders"
-      - name: Push changes
-        uses: ad-m/github-push-action@v0.6.0
-        with:
-          github_token: ${{ secrets.DEPLOY_PAT }}
-          branch: 'main'
+    uses: akuity-adv-gitops-workshop/automated-repo-setup/.github/workflows/update-placeholders.yaml@main
+    with:
+      username: ${{ github.actor }}
+    secrets: inherit
