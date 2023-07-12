@@ -1,6 +1,8 @@
 name: Update Placeholders
 on:
-  create:
+  push:
+    tags:        
+      - setup-complete
 jobs:
   search-and-replace:
     if: github.event.master_branch == github.event.ref  # if default branch was created (i.e. repo was created)
