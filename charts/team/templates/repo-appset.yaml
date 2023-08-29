@@ -1,4 +1,5 @@
-# Using {{ "}}" }} to escape the templating used by appsets.
+# Using }}`}} to escape the templating used by appsets. 
+# https://argo-cd.readthedocs.io/en/latest/operator-manual/applicationset/Template/#deploying-applicationset-resources-as-part-of-a-helm-chart
 {{- range .Values.repos }}
 ---
 apiVersion: argoproj.io/v1alpha1
@@ -14,7 +15,7 @@ spec:
         - path: env/*
   template:
     metadata:
-      name: '{{ $.Release.Name }}-{{ . | trimSuffix "-deploy" }}-{{ "{{" }}path.basename{{ "}}" }}'
+      name: '{{ $.Release.Name }}-{{ . | trimSuffix "-deploy" }}-{{`{{path.basename}}`}}'
       # annotations:
       #   notifications.argoproj.io/subscribe.on-deployed.github: ""
     spec:
@@ -22,13 +23,13 @@ spec:
       source:
         repoURL: 'https://github.com/{{ $.Values.githubOrg | default $.Release.Name }}/{{ . }}'
         targetRevision: 'HEAD'
-        path: '{{ "{{" }}path{{ "}}" }}'
+        path: '{{`{{path}}`}}'
         ## Rendered manifests.
-        # targetRevision: '{{ "{{" }}path{{ "}}" }}'
+        # targetRevision: '{{`{{path}}`}}'
         # path: './'
       destination:
         name: '{{ $.Values.cluster }}'
-        namespace: '{{ $.Release.Name }}-{{ "{{" }}path.basename{{ "}}" }}'
+        namespace: '{{ $.Release.Name }}-{{`{{path.basename}}`}}'
       syncPolicy:
         automated: {}
 {{- end }}
