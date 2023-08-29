@@ -9,7 +9,7 @@ spec:
       revision: HEAD
       directories:
       - path: "teams/*"
-      - path: teams/USERNAME
+      - path: teams/EXAMPLE
         exclude: true
   template:
     metadata:
