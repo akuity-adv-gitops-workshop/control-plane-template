@@ -16,8 +16,6 @@ spec:
   template:
     metadata:
       name: '{{ $.Release.Name }}-{{ . | trimSuffix "-deploy" }}-{{`{{path.basename}}`}}'
-      # annotations:
-      #   notifications.argoproj.io/subscribe.on-deployed.github: ""
     spec:
       project: '{{ $.Release.Name }}'
       source:
