@@ -13,4 +13,4 @@ spec:
     policies:
     - p, proj:{{ .Release.Name }}:admin, *, *, {{ .Release.Name }}/*, allow
     groups:
-    - '{{ .Values.email }}' # Copy email shown in the "User info" of Argo CD.
+    - '{{ .Values.group }}'
